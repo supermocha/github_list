@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		F030FC40242961ED00F9DAA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F030FC3F242961ED00F9DAA9 /* AppDelegate.swift */; };
 		F030FC42242961ED00F9DAA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F030FC41242961ED00F9DAA9 /* SceneDelegate.swift */; };
-		F030FC44242961ED00F9DAA9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F030FC43242961ED00F9DAA9 /* ViewController.swift */; };
 		F030FC47242961ED00F9DAA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F030FC45242961ED00F9DAA9 /* Main.storyboard */; };
 		F030FC49242961EE00F9DAA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F030FC48242961EE00F9DAA9 /* Assets.xcassets */; };
 		F030FC4C242961EE00F9DAA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F030FC4A242961EE00F9DAA9 /* LaunchScreen.storyboard */; };
+		F030FC55242966CB00F9DAA9 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F030FC53242966CB00F9DAA9 /* ListViewController.swift */; };
+		F030FC56242966CB00F9DAA9 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F030FC54242966CB00F9DAA9 /* ListViewController.xib */; };
+		F030FC5B24296A2100F9DAA9 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F030FC5924296A2100F9DAA9 /* ListCell.swift */; };
+		F030FC5C24296A2100F9DAA9 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F030FC5A24296A2100F9DAA9 /* ListCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F030FC3C242961ED00F9DAA9 /* POC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = POC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F030FC3F242961ED00F9DAA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F030FC41242961ED00F9DAA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F030FC43242961ED00F9DAA9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F030FC46242961ED00F9DAA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F030FC48242961EE00F9DAA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F030FC4B242961EE00F9DAA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F030FC4D242961EE00F9DAA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F030FC53242966CB00F9DAA9 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		F030FC54242966CB00F9DAA9 /* ListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
+		F030FC5924296A2100F9DAA9 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		F030FC5A24296A2100F9DAA9 /* ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,50 @@
 		F030FC3E242961ED00F9DAA9 /* POC */ = {
 			isa = PBXGroup;
 			children = (
-				F030FC3F242961ED00F9DAA9 /* AppDelegate.swift */,
-				F030FC41242961ED00F9DAA9 /* SceneDelegate.swift */,
-				F030FC43242961ED00F9DAA9 /* ViewController.swift */,
+				F030FC582429699F00F9DAA9 /* AppDelegate */,
+				F030FC5E242973E900F9DAA9 /* ViewController */,
 				F030FC45242961ED00F9DAA9 /* Main.storyboard */,
 				F030FC48242961EE00F9DAA9 /* Assets.xcassets */,
 				F030FC4A242961EE00F9DAA9 /* LaunchScreen.storyboard */,
 				F030FC4D242961EE00F9DAA9 /* Info.plist */,
 			);
 			path = POC;
+			sourceTree = "<group>";
+		};
+		F030FC572429695D00F9DAA9 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				F030FC53242966CB00F9DAA9 /* ListViewController.swift */,
+				F030FC54242966CB00F9DAA9 /* ListViewController.xib */,
+				F030FC5D24296A2700F9DAA9 /* Cell */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		F030FC582429699F00F9DAA9 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				F030FC3F242961ED00F9DAA9 /* AppDelegate.swift */,
+				F030FC41242961ED00F9DAA9 /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		F030FC5D24296A2700F9DAA9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F030FC5924296A2100F9DAA9 /* ListCell.swift */,
+				F030FC5A24296A2100F9DAA9 /* ListCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		F030FC5E242973E900F9DAA9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F030FC572429695D00F9DAA9 /* List */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +168,9 @@
 			files = (
 				F030FC4C242961EE00F9DAA9 /* LaunchScreen.storyboard in Resources */,
 				F030FC49242961EE00F9DAA9 /* Assets.xcassets in Resources */,
+				F030FC56242966CB00F9DAA9 /* ListViewController.xib in Resources */,
 				F030FC47242961ED00F9DAA9 /* Main.storyboard in Resources */,
+				F030FC5C24296A2100F9DAA9 /* ListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +181,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F030FC44242961ED00F9DAA9 /* ViewController.swift in Sources */,
 				F030FC40242961ED00F9DAA9 /* AppDelegate.swift in Sources */,
+				F030FC5B24296A2100F9DAA9 /* ListCell.swift in Sources */,
+				F030FC55242966CB00F9DAA9 /* ListViewController.swift in Sources */,
 				F030FC42242961ED00F9DAA9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,6 +331,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 37Q58WDHKM;
 				INFOPLIST_FILE = POC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,6 +350,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 37Q58WDHKM;
 				INFOPLIST_FILE = POC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
