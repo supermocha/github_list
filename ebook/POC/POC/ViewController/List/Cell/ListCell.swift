@@ -20,10 +20,13 @@ class ListCell: UITableViewCell {
         selectionStyle = .none
     }
     
-    func config(avatarImage: UIImage, title: String, badge: String?) {
-        avatarImageView.image = avatarImage
+    override func draw(_ rect: CGRect) {
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.size.width / 2
+        avatarImageView.layer.masksToBounds = true
+    }
+    
+    func config(title: String, badge: String?) {
         titleLabel.text = title
-        
         if let badge = badge {
             badgeView.isHidden = false
             badgeLabel.text = badge
