@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListViewController" customModule="POC" customModuleProvider="target">
             <connections>
+                <outlet property="indicator" destination="Knh-Be-iGw" id="v7s-RG-2LP"/>
                 <outlet property="tableView" destination="5am-Za-fRX" id="PXc-0g-ZqM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,16 +24,21 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Knh-Be-iGw">
+                    <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="Knh-Be-iGw" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3Ue-uc-ESa"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="5am-Za-fRX" secondAttribute="bottom" id="5yH-kP-dCt"/>
                 <constraint firstItem="5am-Za-fRX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="awB-Ci-Dtt"/>
+                <constraint firstItem="Knh-Be-iGw" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="bhf-r3-Lvf"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5am-Za-fRX" secondAttribute="trailing" id="fPu-C4-vCm"/>
                 <constraint firstItem="5am-Za-fRX" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="vW9-Bt-vER"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="139" y="142"/>
+            <point key="canvasLocation" x="-44" y="102"/>
         </view>
     </objects>
 </document>

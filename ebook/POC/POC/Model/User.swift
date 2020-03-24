@@ -10,33 +10,12 @@ import UIKit
 
 struct User: Codable {
     
-    struct Input: Codable {
-        var since: Int
-        var perPage: Int
-    }
-    
-    struct Output: Codable {
-       var login: String
-       var avatarURL: String
-       var siteAdmin: Bool
-    }
+    var login: String
+    var avatarURL: String
+    var siteAdmin: Bool
 }
 
-extension User.Input {
-    
-    private enum CodingKeys: String, CodingKey {
-        case since      = "since"
-        case perPage    = "per_page"
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container   = try decoder.container(keyedBy: CodingKeys.self)
-        since            = try container.decode(Int.self, forKey: .since)
-        perPage   = try container.decode(Int.self, forKey: .perPage)
-    }
-}
-
-extension User.Output {
+extension User {
     
     private enum CodingKeys: String, CodingKey {
         case login      = "login"

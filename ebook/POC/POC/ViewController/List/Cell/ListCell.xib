@@ -18,20 +18,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TxC-k9-PlA">
-                        <rect key="frame" x="16" y="15" width="50" height="50"/>
+                        <rect key="frame" x="20" y="16" width="48" height="48"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="eP8-ox-dRe"/>
+                            <constraint firstAttribute="height" constant="48" id="eP8-ox-dRe"/>
                             <constraint firstAttribute="width" secondItem="TxC-k9-PlA" secondAttribute="height" multiplier="1:1" id="phr-3W-dq0"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ixz-Si-THr">
-                        <rect key="frame" x="76" y="29.5" width="42" height="21"/>
+                        <rect key="frame" x="83" y="29.5" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rKV-JJ-v49">
-                        <rect key="frame" x="246.5" y="26" width="57.5" height="28"/>
+                        <rect key="frame" x="242.5" y="26" width="57.5" height="28"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y3P-f4-814">
                                 <rect key="frame" x="10" y="5" width="37.5" height="18"/>
@@ -49,23 +49,23 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="34n-cP-shM">
-                        <rect key="frame" x="20" y="79" width="280" height="1"/>
+                        <rect key="frame" x="20" y="79.5" width="300" height="0.5"/>
                         <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1" id="NcO-zu-jXB"/>
+                            <constraint firstAttribute="height" constant="0.5" id="NcO-zu-jXB"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="TxC-k9-PlA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="1L3-qI-ksF"/>
-                    <constraint firstAttribute="trailing" secondItem="34n-cP-shM" secondAttribute="trailing" constant="20" id="3eW-Ed-Eh0"/>
+                    <constraint firstItem="TxC-k9-PlA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="1L3-qI-ksF"/>
+                    <constraint firstAttribute="trailing" secondItem="34n-cP-shM" secondAttribute="trailing" id="3eW-Ed-Eh0"/>
                     <constraint firstItem="TxC-k9-PlA" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="5XJ-cB-Hdc"/>
                     <constraint firstItem="rKV-JJ-v49" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="CKo-ky-bPo"/>
                     <constraint firstItem="Ixz-Si-THr" firstAttribute="centerY" secondItem="TxC-k9-PlA" secondAttribute="centerY" id="bmn-4D-Aod"/>
                     <constraint firstAttribute="bottom" secondItem="34n-cP-shM" secondAttribute="bottom" id="eKt-Ag-fDy"/>
                     <constraint firstItem="34n-cP-shM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ei8-b3-0l1"/>
-                    <constraint firstItem="Ixz-Si-THr" firstAttribute="leading" secondItem="TxC-k9-PlA" secondAttribute="trailing" constant="10" id="kTJ-d1-GBN"/>
-                    <constraint firstAttribute="trailing" secondItem="rKV-JJ-v49" secondAttribute="trailing" constant="16" id="nYE-co-gmc"/>
+                    <constraint firstItem="Ixz-Si-THr" firstAttribute="leading" secondItem="TxC-k9-PlA" secondAttribute="trailing" constant="15" id="kTJ-d1-GBN"/>
+                    <constraint firstAttribute="trailing" secondItem="rKV-JJ-v49" secondAttribute="trailing" constant="20" id="nYE-co-gmc"/>
                     <constraint firstItem="rKV-JJ-v49" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ixz-Si-THr" secondAttribute="trailing" constant="10" id="tpx-tt-jb3"/>
                 </constraints>
             </tableViewCellContentView>
@@ -76,7 +76,7 @@
                 <outlet property="badgeView" destination="rKV-JJ-v49" id="xaK-1K-jXg"/>
                 <outlet property="titleLabel" destination="Ixz-Si-THr" id="hPT-Pw-NIL"/>
             </connections>
-            <point key="canvasLocation" x="-223.18840579710147" y="18.75"/>
+            <point key="canvasLocation" x="-338" y="21"/>
         </tableViewCell>
     </objects>
 </document>
