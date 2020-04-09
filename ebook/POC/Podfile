@@ -4,4 +4,6 @@ use_frameworks!
 target 'POC' do
     pod 'Alamofire', '~> 4.9.1'
     pod 'Kingfisher', '~> 4.10.1'
+    pod 'RxSwift'
+    pod 'RxCocoa'
 end
