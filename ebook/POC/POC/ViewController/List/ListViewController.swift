@@ -8,6 +8,8 @@
 
 import UIKit
 import Kingfisher
+import RxSwift
+import RxCocoa
 
 class ListViewController: UIViewController {
 
@@ -18,6 +20,8 @@ class ListViewController: UIViewController {
     lazy private var viewModel = {
         return ListViewModel()
     }()
+    
+    private let disposeBag = DisposeBag()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -40,7 +44,7 @@ class ListViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        viewModel.showIndicator = { [weak self] in
+        /*viewModel.showIndicator = { [weak self] in
             DispatchQueue.main.async {
                 self?.indicator.isHidden = false
                 self?.indicator.startAnimating()
@@ -56,8 +60,35 @@ class ListViewController: UIViewController {
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
-        }
+        }*/
+        
+        // rx version
+        viewModel.isLoading
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { isLoading in
+                self.indicator.isHidden = !isLoading
+                isLoading ? self.indicator.startAnimating() : self.indicator.stopAnimating()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.needReloadData
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { self.tableView.reloadData() })
+            .disposed(by: disposeBag)
+        
+        
+        
+        /*viewModel.items
+            .bind(to:tableView.rx.items(cellIdentifier: String(describing: ListCell.self), cellType: ListCell.self)) { row, item, cell in
+                cell.config(title: "#\(row + 1) \(item.login)",
+                            badge: item.siteAdmin ? "Admin" : nil)
+                cell.avatarImageView.kf.setImage(with: URL(string: item.avatarURL),
+                placeholder: UIImage(named: "avatar.jpg"))
+            }
+            .disposed(by: disposeBag)*/
+        
         viewModel.load()
+        
     }
 }
 

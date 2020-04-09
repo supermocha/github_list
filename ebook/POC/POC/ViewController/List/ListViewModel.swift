@@ -8,14 +8,17 @@
 
 import UIKit
 import Alamofire
+import RxSwift
 
 class ListViewModel: NSObject {
 
     // MARK: - Publiv Variable
-    var showIndicator: (() -> Void)?
-    var hideIndicator: (() -> Void)?
-    var reloadData: (() -> Void)?
+    //var showIndicator: (() -> Void)?
+    //var hideIndicator: (() -> Void)?
+    //var reloadData: (() -> Void)?
     
+    public let isLoading: PublishSubject<Bool> = PublishSubject()
+    public let needReloadData: PublishSubject<Void> = PublishSubject()
     var numberOfItems: Int {
         return cellViewModels.count
     }
@@ -23,7 +26,8 @@ class ListViewModel: NSObject {
     // MARK: - Private Variable
     private var cellViewModels: [User] = [] {
         didSet {
-          reloadData?()
+          //reloadData?()
+            needReloadData.onNext(())
         }
     }
     
@@ -39,15 +43,16 @@ class ListViewModel: NSObject {
     // MARK: - Request API
     private func requestAllUsers() {
         
-        showIndicator?()
-
+        //showIndicator?()
+        isLoading.onNext(true)
+        
         let url = "https://api.github.com/users"
         let params = ["since": 0, "per_page": 100]
         
         Alamofire.request(url, parameters: params).responseData { [weak self] (data) in
             
-            self?.hideIndicator?()
-            
+            //self?.hideIndicator?()
+            self?.isLoading.onNext(false)
             switch data.result {
             case .success:
                 self?.handleAllUsers(data: data.result.value ?? Data())
