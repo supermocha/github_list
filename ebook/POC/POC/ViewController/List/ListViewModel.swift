@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import RxSwift
+import RxCocoa
 
 class ListViewModel: NSObject {
 
@@ -17,9 +18,13 @@ class ListViewModel: NSObject {
     //var hideIndicator: (() -> Void)?
     //var reloadData: (() -> Void)?
     
-    public let isLoading: PublishSubject<Bool> = PublishSubject()
+    public let isLoading     : PublishSubject<Bool> = PublishSubject()
     public let needReloadData: PublishSubject<Void> = PublishSubject()
-    var numberOfItems: Int {
+    public let items         : PublishSubject<[User]> = PublishSubject()
+    public let loader        : PublishSubject<Void> = PublishSubject()
+    
+    private let disposeBag = DisposeBag()
+    /*var numberOfItems: Int {
         return cellViewModels.count
     }
     
@@ -29,16 +34,25 @@ class ListViewModel: NSObject {
           //reloadData?()
             needReloadData.onNext(())
         }
+    }*/
+    override init() {
+        super.init()
+        
+        // load data
+        loader
+            .subscribe(onNext: { self.requestAllUsers() })
+            .disposed(by: disposeBag)
     }
+    
     
     // MARK: - Public Function
-    func load() {
+    /*func load() {
         requestAllUsers()
-    }
+    }*/
     
-    func getCellViewModel(at indexPath: IndexPath) -> User {
+    /*func getCellViewModel(at indexPath: IndexPath) -> User {
         return cellViewModels[indexPath.row]
-    }
+    }*/
     
     // MARK: - Request API
     private func requestAllUsers() {
@@ -53,6 +67,7 @@ class ListViewModel: NSObject {
             
             //self?.hideIndicator?()
             self?.isLoading.onNext(false)
+    
             switch data.result {
             case .success:
                 self?.handleAllUsers(data: data.result.value ?? Data())
@@ -65,7 +80,8 @@ class ListViewModel: NSObject {
     private func handleAllUsers(data: Data) {
         do {
             let users = try JSONDecoder().decode([User].self, from: data)
-            users.forEach { cellViewModels.append($0) }
+            //users.forEach { cellViewModels.append($0) }
+            items.onNext(users)
         } catch {
             print("Failed to decode json data, error \(error.localizedDescription)")
         }

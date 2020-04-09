@@ -31,14 +31,15 @@ class ListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        //navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     // MARK: - Private Function
     private func setup() {
         bindViewModel()
-        tableView.dataSource = self
-        tableView.delegate = self
+        //tableView.dataSource = self
+        //tableView.delegate = self
+        tableView.rx.setDelegate(self).disposed(by: disposeBag)
         tableView.register(UINib(nibName: String(describing: ListCell.self), bundle: nil),
                            forCellReuseIdentifier: String(describing: ListCell.self))
     }
@@ -77,22 +78,28 @@ class ListViewController: UIViewController {
             .disposed(by: disposeBag)
         
         
-        
-        /*viewModel.items
-            .bind(to:tableView.rx.items(cellIdentifier: String(describing: ListCell.self), cellType: ListCell.self)) { row, item, cell in
+        viewModel.items
+            .bind(to: tableView.rx.items(cellIdentifier: String(describing: ListCell.self), cellType: ListCell.self)) { row, item, cell in
                 cell.config(title: "#\(row + 1) \(item.login)",
                             badge: item.siteAdmin ? "Admin" : nil)
+                
                 cell.avatarImageView.kf.setImage(with: URL(string: item.avatarURL),
-                placeholder: UIImage(named: "avatar.jpg"))
+                                                 placeholder: UIImage(named: "avatar.jpg"))
             }
-            .disposed(by: disposeBag)*/
+            .disposed(by: disposeBag)
         
-        viewModel.load()
+        //viewModel.load()
+        rx.viewWillAppear
+            .subscribe({ _ in
+                self.navigationController?.setNavigationBarHidden(true, animated: false)
+                self.viewModel.loader.onNext(())
+            })
+            .disposed(by: disposeBag)
         
     }
 }
 
-extension ListViewController: UITableViewDataSource {
+/*extension ListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfItems
@@ -109,11 +116,27 @@ extension ListViewController: UITableViewDataSource {
         
         return cell
     }
-}
+}*/
 
 extension ListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+}
+
+extension Reactive where Base: UIViewController {
+    public var viewDidLoad: ControlEvent<Void> {
+        return ControlEvent(events: self.methodInvoked(#selector(Base.viewDidLoad))
+                                        .map { _ in })
+    }
+    public var viewWillAppear: ControlEvent<Bool> {
+        return ControlEvent(events: self.methodInvoked(#selector(Base.viewWillAppear(_:)))
+                                        .map { $0.first as? Bool ?? false })
+    }
+    
+    public var viewDidAppear: ControlEvent<Bool> {
+        return ControlEvent(events: self.methodInvoked(#selector(Base.viewDidAppear(_:)))
+                                        .map { $0.first as? Bool ?? false })
     }
 }
